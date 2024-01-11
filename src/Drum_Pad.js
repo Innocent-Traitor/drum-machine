@@ -5,7 +5,7 @@ function DrumPad({soundID, text, audioSrc, parentCallback}) {
     useEffect(() =>  {
         const handleKeyPress = (e) => {
             const key = e.key;
-            if (key === text.toLowerCase()) {
+            if (key === text.toLowerCase() || key.toUpperCase() === text) {
               handleClick();
 
             }
@@ -17,11 +17,11 @@ function DrumPad({soundID, text, audioSrc, parentCallback}) {
         }
     });
 
-    const snd = new Audio(audioSrc);
+    const snd = document.getElementById(text);
     const playSound = () => {
         snd.play();
         snd.currentTime=0;
-        return;
+
     }
 
     const handleClick = () => {
@@ -30,12 +30,13 @@ function DrumPad({soundID, text, audioSrc, parentCallback}) {
     }
 
   return (
-    <div className="drum-pad">
+    <div className="drum-pad-div">
       <button 
-        className='drum-pad-button'
-        id={soundID} 
+        className='drum-pad' 
         onClick={handleClick}
+        id={soundID}
       >
+        <audio className='clip' src={audioSrc} id={text}></audio>
         {text}
       </button>
     </div>

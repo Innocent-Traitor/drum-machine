@@ -6,7 +6,7 @@
     --drum-pad-active: #2c2c2c;
 }
 
-.drum-pad {
+.drum-pad-div {
     width: 75px;
     height: 75px;
     border: 3px solid yellow;
