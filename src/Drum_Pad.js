@@ -1,12 +1,12 @@
 import './Drum_Pad.css';
 import { useEffect } from 'react';
 
-function DrumPad({soundID, text, audioSrc}) {
+function DrumPad({soundID, text, audioSrc, parentCallback}) {
     useEffect(() =>  {
         const handleKeyPress = (e) => {
             const key = e.key;
             if (key === text.toLowerCase()) {
-                playSound();
+              handleClick();
 
             }
         };
@@ -24,12 +24,17 @@ function DrumPad({soundID, text, audioSrc}) {
         return;
     }
 
+    const handleClick = () => {
+      playSound();
+      parentCallback(soundID);
+    }
+
   return (
     <div className="drum-pad">
       <button 
         className='drum-pad-button'
         id={soundID} 
-        onClick={playSound}
+        onClick={handleClick}
       >
         {text}
       </button>

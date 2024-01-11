@@ -1,9 +1,9 @@
 import './Display.css';
 
-function Display() {
+function Display({msg}) {
     return (
         <div id='display'>
-
+            <p>{msg}</p>
         </div>
     )
 }
